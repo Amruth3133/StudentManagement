@@ -2,6 +2,7 @@ package com.amruth.StudentManagement.controller;
 
 import com.amruth.StudentManagement.model.Student;
 import com.amruth.StudentManagement.service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +16,7 @@ public class StudentController {
     private StudentService service;
 
     @PostMapping
-    public Student addStudent(@RequestBody Student student)
+    public Student addStudent(@Valid @RequestBody Student student)
     {
         return service.addStudent(student);
     }
@@ -33,7 +34,7 @@ public class StudentController {
     }
 
     @PutMapping
-    public Student updateStudent(@RequestBody Student student)
+    public Student updateStudent(@Valid @RequestBody Student student)
     {
         return service.updateStudent(student);
     }
@@ -44,6 +45,12 @@ public class StudentController {
         service.deleteStudent(id);
         return "Student with ID" +id+ "deleted";
     }
+
+    @GetMapping("/search")
+    public List<Student> searchByName(@RequestParam String name) {
+        return service.searchStudentsByName(name);
+    }
+
 
 
 }

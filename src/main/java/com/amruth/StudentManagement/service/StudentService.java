@@ -15,6 +15,7 @@ public class StudentService {
     @Autowired
     private StudentRepository repo;
 
+
     public Student addStudent(Student student)
     {
         return repo.save(student);
@@ -40,4 +41,9 @@ public class StudentService {
     {
         repo.deleteById(id);
     }
+
+    public List<Student> searchStudentsByName(String name) {
+        return repo.findByNameContainingIgnoreCase(name);
+    }
+
 }
