@@ -11,6 +11,9 @@ A simple RESTful web application built using **Spring Boot**, **Spring Data JPA*
 - Search student by ID
 - Update student details
 - Delete student by ID
+- Input validation with custom error messages ✅
+- Interactive API docs with Swagger UI ✅
+
 
 ---
 
